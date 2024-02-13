@@ -7,121 +7,121 @@ using namespace std;
 TEST_CASE("constructors") {
     SECTION("default") {
         Vec v;
-        // REQUIRE(v.getSize() == 0);
+        REQUIRE(v.getSize() == 0);
     }
     SECTION("explicit-value") {
-        // Vec v1(3);
-        // REQUIRE(v1.getSize() == 3);
-        // for (int i = 0; i < 3; ++i) {
-        //     REQUIRE(v1.getItem(i) == 0);
-        // }
-        // Vec v2(8);
-        // REQUIRE(v2.getSize() == 8);
-        // for (int i = 0; i < 8; ++i) {
-        //     REQUIRE(v2.getItem(i) == 0);
-        // }
-        // Vec v3(0);
-        // REQUIRE(v3.getSize() == 0);
+        Vec v1(3);
+        REQUIRE(v1.getSize() == 3);
+        for (int i = 0; i < 3; ++i) {
+            REQUIRE(v1.getItem(i) == 0);
+        }
+        Vec v2(8);
+        REQUIRE(v2.getSize() == 8);
+        for (int i = 0; i < 8; ++i) {
+            REQUIRE(v2.getItem(i) == 0);
+        }
+        Vec v3(0);
+        REQUIRE(v3.getSize() == 0);
     }
     SECTION("copy") {
-        // Vec v1;
-        // Vec v2(v1);
-        // REQUIRE(v2.getSize() == 0);
+        Vec v1;
+        Vec v2(v1);
+        REQUIRE(v2.getSize() == 0);
 
-        // Vec v3(5);
-        // Vec v4(v3);
-        // REQUIRE(v4.getSize() == 5);
-        // for (unsigned i = 0; i < 5; ++i) {
-        //     REQUIRE(v4.getItem(i) == 0);
-        // }
+        Vec v3(5);
+        Vec v4(v3);
+        REQUIRE(v4.getSize() == 5);
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v4.getItem(i) == 0);
+        }
 
-        // Vec v5(5);
-        // for (unsigned i = 0; i < 5; ++i) {
-        //     v5.setItem(i, i + 1);
-        // }
-        // Vec v6(v5);
-        // REQUIRE(v6.getSize() == 5);
-        // for (unsigned i = 0; i < 5; ++i) {
-        //     REQUIRE(v6.getItem(i) == v5.getItem(i));
-        // }
+        Vec v5(5);
+        for (unsigned i = 0; i < 5; ++i) {
+            v5.setItem(i, i + 1);
+        }
+        Vec v6(v5);
+        REQUIRE(v6.getSize() == 5);
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v6.getItem(i) == v5.getItem(i));
+        }
     }
 }
 
 TEST_CASE("destructor") {
-    // Vec v(5);
-    // v.~Vec();
-    // REQUIRE(v.getSize() == 0);
+    Vec v(5);
+    v.~Vec();
+    REQUIRE(v.getSize() == 0);
 }
 
 TEST_CASE("assignment") {
-    // Vec v3(5);
-    // for (unsigned i = 0; i < 5; ++i) {
-    //     v3.setItem(i, i + 1);
-    // }
-    // SECTION("empty-to-empty") {
-    //     Vec v, v0;
-    //     v = v0;
-    //     REQUIRE(v.getSize() == 0);
-    // }
-    // SECTION("empty-to-nonempty") {
-    //     Vec v1;
-    //     Vec v2(5);
-    //     v2 = v1;
-    //     REQUIRE(v2.getSize() == 0);
-    //     cout << " 1 " << flush;
-    // }
-    // SECTION("nonempty-to-empty") {
-    //     Vec v4;
-    //     v4 = v3;
-    //     REQUIRE(v4.getSize() == 5);
-    //     for (unsigned i = 0; i < 5; ++i) {
-    //         REQUIRE(v4.getItem(i) == (i + 1));
-    //     }
-    // }
-    // SECTION("nonempty-to-nonempty (larger into smaller)") {
-    //     Vec v5(2);
-    //     for (unsigned i = 0; i < 2; ++i) {
-    //         v5.setItem(i, (i + 1) * 10);
-    //     }
-    //     v5 = v3;
-    //     REQUIRE(v5.getSize() == 5);
-    //     for (unsigned i = 0; i < 5; ++i) {
-    //         REQUIRE(v5.getItem(i) == (i + 1));
-    //     }
-    // }
-    // SECTION("nonempty-to-nonempty (smaller into larger)") {
-    //     Vec v6(7);
-    //     for (unsigned i = 0; i < 7; ++i) {
-    //         v6.setItem(i, (i + 1) * 10);
-    //     }
-    //     v6 = v3;
-    //     REQUIRE(v6.getSize() == 5);
-    //     for (unsigned i = 0; i < 5; ++i) {
-    //         REQUIRE(v6.getItem(i) == (i + 1));
-    //     }
-    // }
-    // SECTION("nonempty-to-nonempty (equal sized)") {
-    //     Vec v7(5);
-    //     for (unsigned i = 0; i < 5; ++i) {
-    //         v7.setItem(i, (i + 1) * 10);
-    //     }
-    //     v7 = v3;
-    //     REQUIRE(v7.getSize() == 5);
-    //     for (unsigned i = 0; i < 5; ++i) {
-    //         REQUIRE(v7.getItem(i) == (i + 1));
-    //     }
-    // }
-    // SECTION("assignment chaining") {
-    //     Vec v8;
-    //     Vec v9(4);
-    //     v9 = v8 = v3;
-    //     REQUIRE(v9.getSize() == 5);
-    //     REQUIRE(v9.getSize() == 5);
-    //     for (unsigned i = 0; i < 5; ++i) {
-    //         REQUIRE(v8.getItem(i) == (i + 1));
-    //         REQUIRE(v9.getItem(i) == (i + 1));
-    //     }
-    // }
+    Vec v3(5);
+    for (unsigned i = 0; i < 5; ++i) {
+        v3.setItem(i, i + 1);
+    }
+    SECTION("empty-to-empty") {
+        Vec v, v0;
+        v = v0;
+        REQUIRE(v.getSize() == 0);
+    }
+    SECTION("empty-to-nonempty") {
+        Vec v1;
+        Vec v2(5);
+        v2 = v1;
+        REQUIRE(v2.getSize() == 0);
+        cout << " 1 " << flush;
+    }
+    SECTION("nonempty-to-empty") {
+        Vec v4;
+        v4 = v3;
+        REQUIRE(v4.getSize() == 5);
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v4.getItem(i) == (i + 1));
+        }
+    }
+    SECTION("nonempty-to-nonempty (larger into smaller)") {
+        Vec v5(2);
+        for (unsigned i = 0; i < 2; ++i) {
+            v5.setItem(i, (i + 1) * 10);
+        }
+        v5 = v3;
+        REQUIRE(v5.getSize() == 5);
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v5.getItem(i) == (i + 1));
+        }
+    }
+    SECTION("nonempty-to-nonempty (smaller into larger)") {
+        Vec v6(7);
+        for (unsigned i = 0; i < 7; ++i) {
+            v6.setItem(i, (i + 1) * 10);
+        }
+        v6 = v3;
+        REQUIRE(v6.getSize() == 5);
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v6.getItem(i) == (i + 1));
+        }
+    }
+    SECTION("nonempty-to-nonempty (equal sized)") {
+        Vec v7(5);
+        for (unsigned i = 0; i < 5; ++i) {
+            v7.setItem(i, (i + 1) * 10);
+        }
+        v7 = v3;
+        REQUIRE(v7.getSize() == 5);
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v7.getItem(i) == (i + 1));
+        }
+    }
+    SECTION("assignment chaining") {
+        Vec v8;
+        Vec v9(4);
+        v9 = v8 = v3;
+        REQUIRE(v9.getSize() == 5);
+        REQUIRE(v9.getSize() == 5);
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v8.getItem(i) == (i + 1));
+            REQUIRE(v9.getItem(i) == (i + 1));
+        }
+    }
 }
 
 TEST_CASE("getSize") {
@@ -135,41 +135,41 @@ TEST_CASE("getSize") {
 
 TEST_CASE("setItem") {
     SECTION("empty case") {
-        // Vec v0;
-        // REQUIRE_THROWS_AS(v0.setItem(0, 11), range_error);
+        Vec v0;
+        REQUIRE_THROWS_AS(v0.setItem(0, 11), range_error);
     }
     SECTION("nonempty case, valid subscript") {
-        // Vec v(5);
-        // for (unsigned i = 0; i < 5; ++i) {
-        //     v.setItem(i, i + 1);
-        // }
-        // for (unsigned i = 0; i < 5; ++i) {
-        //     REQUIRE(v.getItem(i) == (i + 1));
-        // }
+        Vec v(5);
+        for (unsigned i = 0; i < 5; ++i) {
+            v.setItem(i, i + 1);
+        }
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v.getItem(i) == (i + 1));
+        }
     }
     SECTION("nonempty case, invalid subscript") {
-        // Vec v2(3);
-        // REQUIRE_THROWS_AS(v2.setItem(3, 33), range_error);
+        Vec v2(3);
+        REQUIRE_THROWS_AS(v2.setItem(3, 33), range_error);
     }
 }
 
 TEST_CASE("getItem") {
     SECTION("empty Vec") {
-        // Vec v0;
-        // REQUIRE_THROWS_AS(v0.getItem(0), range_error);
+        Vec v0;
+        REQUIRE_THROWS_AS(v0.getItem(0), range_error);
     }
     SECTION("non-empty, valid access") {
-        // Vec v(5);
-        // for (unsigned i = 0; i < 5; ++i) {
-        //     v.setItem(i, i + 1);
-        // }
-        // for (unsigned i = 0; i < 5; ++i) {
-        //     REQUIRE(v.getItem(i) == (i + 1));
-        // }
+        Vec v(5);
+        for (unsigned i = 0; i < 5; ++i) {
+            v.setItem(i, i + 1);
+        }
+        for (unsigned i = 0; i < 5; ++i) {
+            REQUIRE(v.getItem(i) == (i + 1));
+        }
     }
     SECTION("nonempty Vec, invalid index") {
-    //     Vec v2(3);
-    //     REQUIRE_THROWS_AS(v2.getItem(3), range_error);
+        Vec v2(3);
+        REQUIRE_THROWS_AS(v2.getItem(3), range_error);
     }
 }
 

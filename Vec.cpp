@@ -1,13 +1,86 @@
  /* Vec.cpp defines the methods for Vec, a simple vector class.
- * Student Name:
- * Date:
+ * Student Name: Ariunzul Saruul, Aisha Abdullahi
+ * Date: 13 Feb 2024
  * Begun by: Joel C. Adams, for CS 112 at Calvin University.
  */
 
 #include "Vec.h"
 
-Vec::Vec() {
+Vec::Vec(unsigned size) { // explicit-value constructor
+    mySize = size;
+    
+    if (size > 0) { 
+        myArray = new Item[size]; // dynamic allocation
+        for (int i = 0; i < size; i ++) {
+            myArray [i] = 0;
+        }
+    }
+    else {
+        myArray = nullptr;
+    }
+  }
+
+Vec::Vec() { // default constructor
+    mySize = 0;
+    myArray = nullptr;
 }
 
-Vec::~Vec() {
+Vec::~Vec() { // destructor
+    delete [] myArray;
+    myArray = nullptr;
+    mySize =0;
 }
+
+Vec::Vec(const Vec& original) { // copy constructor
+    mySize = original.mySize;
+    
+    if (mySize > 0) {
+        myArray = new Item[mySize]; // dynamic allocation
+        for (int i = 0; i < mySize; i++) {
+            myArray[i] = original.myArray[i];
+        }
+        
+    }
+    else {
+            myArray = nullptr;
+        }
+  }
+
+
+unsigned Vec::getSize() const {
+    return mySize;
+}
+
+Item Vec::getItem(unsigned index) const { // getItem
+	if (index < 0 || index >= mySize) {
+     	throw range_error("Bad index");
+	}
+	return myArray[index];
+}
+
+void Vec::setItem(unsigned index, const Item& it) { // setItem
+	if (index < 0 || index >= mySize) {
+    	throw range_error("Bad index");
+	}
+	myArray[index] = it;
+}
+
+Vec& Vec::operator=(const Vec& original) {
+      	if (this != &original){
+            if (mySize != original.mySize){
+                if (mySize > 0){
+                    delete [] myArray;
+                    myArray = nullptr;
+                }
+                if  (original.mySize > 0){
+                    myArray = new Item[original.mySize]; 
+                }
+                mySize = original.mySize;
+            }
+            for (int i = 0; i < mySize; i++) {
+            myArray[i] = original.myArray[i];
+        }
+        }
+
+        return *this;
+   	}

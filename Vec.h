@@ -17,8 +17,18 @@ class Vec {
 	Vec();
 	virtual ~Vec();
 
-   private:
 
+   unsigned getSize() const;
+   Vec(unsigned size);  // explicit-value constructor
+   Item getItem(unsigned index) const;
+   void setItem(unsigned index, const Item& it);
+   Vec(const Vec& original);
+   Vec& operator=(const Vec& original);
+
+
+   private:
+   unsigned mySize;
+   Item * myArray;
 };
 
 #endif /*VEC_H_*/
