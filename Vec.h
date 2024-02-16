@@ -24,6 +24,10 @@ class Vec {
    void setItem(unsigned index, const Item& it);
    Vec(const Vec& original);
    Vec& operator=(const Vec& original);
+   void setSize(unsigned newSize);
+   bool operator==(const Vec& v2) const;
+   void writeTo(ostream& out) const;
+   void readFrom(istream& in);
 
 
    private:
